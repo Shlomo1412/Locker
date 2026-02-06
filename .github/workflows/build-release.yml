@@ -23,11 +23,11 @@ jobs:
         run: dotnet restore
 
       - name: Build Release
-        run: dotnet publish -c Release
+        run: dotnet publish -c Release --runtime win-x64 --output ./publish
 
       - name: Upload Release Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Locker-Release
-          path: bin/Release/net8.0-windows/win-x64/publish/Locker.exe
+          path: ./publish/Locker.exe
           if-no-files-found: error
